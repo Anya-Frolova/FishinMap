@@ -9,13 +9,15 @@ const UserSchema = new mongoose.Schema({
     rank: {
         type: Number,
         default: 0,
-        min: 0,
+        min: 0
     },
     role: {
         type: String,
         enum: ['Regular', 'Expert', 'Admin'],
         default: 'Regular'
     }
-}, { timestamps: true });
 
+}, {
+    timestamps: true
+});
 module.exports = mongoose.model('User', UserSchema);
