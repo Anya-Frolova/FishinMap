@@ -128,6 +128,21 @@ const approveUser = async (req, res) => {
     }
 };
 
+const declineUser = async (req, res) => {
+    try {
+        const deletedUser = await TestUser.findByIdAndDelete(req.params.id);
+
+        if (!deletedUser) {
+            return res.status(404).json({ message: "❌ User not found in test DB" });
+        }
+
+        res.status(200).json({ message: "🗑️ User declined and deleted from test DB", user: deletedUser });
+    } catch (err) {
+        console.error("❌ Error in declineUser:", err.message);
+        res.status(500).json({ message: "Server error", error: err.message });
+    }
+};
+
 
 module.exports = {
     getAllUsers,
@@ -136,5 +151,6 @@ module.exports = {
     upgradeToExpert,
     keepAsFisherman,
     getUserById,
-    approveUser
+    approveUser,
+    declineUser
 };

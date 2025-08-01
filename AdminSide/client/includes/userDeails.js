@@ -45,4 +45,23 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Failed to approve user");
         }
     });
+
+    const declineBtn = document.querySelector(".decline");
+
+    declineBtn.addEventListener("click", async () => {
+        try {
+            const res = await fetch(`http://localhost:3000/api/users/${userId}/decline`, {
+                method: "DELETE"
+            });
+
+            if (!res.ok) throw new Error("Failed to decline user");
+
+            alert("🗑️ User declined");
+            window.location.href = "Management.html";
+        } catch (err) {
+            console.error("❌ Decline failed:", err);
+            alert("Failed to decline user");
+        }
+    });
+
 });
