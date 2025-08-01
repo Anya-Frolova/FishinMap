@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const emptyMsg = document.getElementById("empty-message");
 
     try {
-        const res = await fetch("http://localhost:3000/api/posts/pending");
+        const res = await fetch("https://fishinmap-opo1.onrender.com/api/posts/pending");
         const posts = await res.json();
 
         if (!posts.length) {
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
 
             card.querySelector(".approve").addEventListener("click", async () => {
-                const res = await fetch(`http://localhost:3000/api/posts/${post._id}/approve`, {
+                const res = await fetch(`https://fishinmap-opo1.onrender.com/api/posts/${post._id}/approve`, {
                     method: "PATCH"
                 });
                 if (res.ok) {
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
 
             card.querySelector(".decline").addEventListener("click", async () => {
-                const res = await fetch(`http://localhost:3000/api/posts/${post._id}/decline`, {
+                const res = await fetch(`https://fishinmap-opo1.onrender.com/api/posts/${post._id}/decline`, {
                     method: "DELETE"
                 });
                 if (res.ok) {
