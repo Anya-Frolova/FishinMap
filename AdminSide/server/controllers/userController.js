@@ -107,6 +107,7 @@ const approveUser = async (req, res) => {
         if (existingUser) {
             return res.status(409).json({ message: "⚠️ User already exists in fishinMap" });
         }
+        const updatedRank = (testUser.rank || 0) + 1;
 
         const newUser = new MainUser({
             firstName: testUser.firstName,

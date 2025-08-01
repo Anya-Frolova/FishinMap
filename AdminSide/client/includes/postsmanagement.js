@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             card.className = "card";
 
             card.innerHTML = `
-    <h3>${post.user?.firstName || "Unknown User"}</h3>
+   <h3>${post.user ? `${post.user.firstName} ${post.user.lastName}` : "Unknown User"}</h3>
     <img src="${post.photoSrc || 'images/emptyprofile.png'}" alt="post image">
         <p><strong>Fish:</strong> ${post.fishType}, ${post.fishWeight}kg, ${post.fishLength}cm</p>
         <p><strong>Location:</strong> ${post.location}</p>
@@ -57,5 +57,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     } catch (err) {
         console.error("Error loading posts:", err);
     }
+
 });
 

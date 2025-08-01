@@ -264,6 +264,30 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/posts/assign-users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/posts/assign-users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts",
+						"assign-users"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
