@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const {
-    getAllPosts,
-    approvePost,
-    deletePost
+    getPendingPostsFromTest, approvePost, declinePost, assignUsersToTestPosts
 } = require('../controllers/postController');
 
-router.get('/', getAllPosts);
+router.get('/pending', getPendingPostsFromTest);
+router.patch('/:id/approve', approvePost);
+router.delete('/:id/decline', declinePost);
+router.patch('/assign-users', assignUsersToTestPosts);
+
 
 
 module.exports = router;

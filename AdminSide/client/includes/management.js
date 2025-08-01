@@ -3,21 +3,28 @@ async function fetchUsersAndDisplay() {
         const response = await fetch('http://localhost:3000/api/users');
         const users = await response.json();
 
+        console.log("🔍 users from server:", users);
+
+        if (!Array.isArray(users)) {
+            throw new Error("Server response is not a user array");
+        }
+
         const tbody = document.querySelector("#user-table tbody");
         tbody.innerHTML = "";
 
         users
-            .filter(user => user.role !== "admin")
-            .forEach(user => {
-                const tr = document.createElement("tr");
+        console.log("📦 Users received:", users);
 
-                const fullName = `${user.firstName} ${user.lastName}`;
-                const email = user.email;
-                const id = user._id.slice(-12);
-                const subsDate = new Date(user.createdAt).toLocaleDateString('en-GB');
-                const verified = user.role === "Expert" ? "Yes" : "No";
+        users.forEach(user => {
+            const tr = document.createElement("tr");
 
-                tr.innerHTML = `
+            const fullName = `${user.firstName} ${user.lastName}`;
+            const email = user.email;
+            const id = user._id.slice(-12);
+            const subsDate = new Date(user.createdAt).toLocaleDateString('en-GB');
+            const verified = user.role === "Expert" ? "Yes" : "No";
+
+            tr.innerHTML = `
                     <td>${fullName}</td>
                     <td>${email}</td>
                     <td>${id}</td>
@@ -25,15 +32,15 @@ async function fetchUsersAndDisplay() {
                     <td>${verified}</td>
                 `;
 
-                tr.addEventListener("click", () => {
-                    window.location.href = `userDetails.html?userId=${user._id}`;
-                });
-
-                tbody.appendChild(tr);
+            tr.addEventListener("click", () => {
+                window.location.href = `userDetails.html?userId=${user._id}`;
             });
+
+            tbody.appendChild(tr);
+        });
     } catch (err) {
         console.error("❌ Failed to load users", err);
     }
 }
 
-window.addEventListener("DOMContentLoaded", fetchUsersAndDisplay);
+document.addEventListener("DOMContentLoaded", fetchUsersAndDisplay);
