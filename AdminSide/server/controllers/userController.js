@@ -18,7 +18,7 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({ email, password });
+        const user = await MainUser.findOne({ email, password }); // 💥 שימוש ב־fishinMap
 
         if (!user) {
             return res.status(401).json({ message: 'Invalid credentials' });
