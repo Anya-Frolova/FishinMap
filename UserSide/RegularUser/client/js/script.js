@@ -59,7 +59,7 @@ if (signupForm) {
     delete data.verifyPassword;
 
     try {
-      const resp = await fetch('/api/auth/signup', {
+      const resp = await fetch('https://fishinmap.onrender.com/api/auth/signup', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify(data)
@@ -118,7 +118,7 @@ if (loginForm) {
     }
 
     try {
-      const resp = await fetch('/api/auth/login', {
+      const resp = await fetch('https://fishinmap.onrender.com/api/auth/login', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({ email, password })
@@ -322,7 +322,7 @@ if (confirmBtn) {
 
     try {
       // 3) POST /api/posts
-      const resp = await fetch('/api/posts', {
+      const resp = await fetch('https://fishinmap.onrender.com/api/posts', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify(postBody)
@@ -460,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
           status: 1 // всегда 1 для эксперта
         };
         try {
-          const resp = await fetch('/api/expert', {
+          const resp = await fetch('https://fishinmap.onrender.com/api/expert', {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body:    JSON.stringify(postBody)
