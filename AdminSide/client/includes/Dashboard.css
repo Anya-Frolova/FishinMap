@@ -4,21 +4,22 @@
     box-sizing: border-box;
 }
 
+body {
+    height: 100vh;
+    background-color: #BDDFFF;
+    font-family: "Balsamiq Sans", cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 40px;
+}
+
 header .top-bar {
     display: flex;
     justify-content: space-between;
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
-}
-
-body {
-    margin-bottom: 150px;
-    padding: 0;
-    background-color: #BDDFFF;
-    font-family: "Balsamiq Sans";
-    display: flex;
-    flex-direction: column;
 }
 
 header .top-bar img {
@@ -37,18 +38,15 @@ h1 {
 main {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 0 20px;
+    align-items: center;
     width: 100%;
-    max-width: 1200px;
 }
 
 .dashboard-card {
     background-color: #80CFFF;
     border: 2px solid black;
     border-radius: 16px;
-    width: 360px;
+    width: 400px;
     padding: 20px;
     position: relative;
     display: flex;
@@ -61,12 +59,12 @@ main {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding: 0 5px;
 }
 
 .card-header h2 {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: normal;
     color: white;
 }
@@ -77,7 +75,9 @@ main {
 }
 
 canvas {
-    margin: 10px 0;
+    margin: 20px 0;
+    width: 200px !important;
+    height: 200px !important;
 }
 
 .center-label {
@@ -92,7 +92,7 @@ canvas {
 }
 
 .chart-number {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
     color: #000;
 }
@@ -125,10 +125,6 @@ canvas {
 
 .orange {
     background-color: #F6B26B;
-}
-
-.green {
-    background-color: #8EEA8D;
 }
 
 .chart-icon {

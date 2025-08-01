@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #BDDFFF;
+    font-family: "Balsamiq Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 150px;
+}
 
 header .top-bar {
     display: flex;
@@ -13,41 +21,62 @@ header .top-bar {
     box-sizing: border-box;
 }
 
-body {
-    margin-bottom: 150px;
-    padding: 0;
-    background-color: #BDDFFF;
-    font-family: "Balsamiq Sans";
-    display: flex;
-    flex-direction: column;
-}
-
-header .top-bar img {
+header .top-bar a:first-child img {
+    position: absolute;
+    left: 20px;
+    top: 6px;
     width: 48px;
     height: 48px;
-    flex-shrink: 0;
+}
+
+header .top-bar a:last-child img {
+    position: absolute;
+    right: 20px;
+    top: 6px;
+    width: 48px;
+    height: 48px;
 }
 
 h1 {
     color: #000;
     text-align: center;
-    font-family: "Balsamiq Sans";
     font-size: 55px;
     font-weight: 400;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
     width: 100%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #8BC7FF;
+    padding: 10px 14px;
+    border-radius: 30px;
+    width: 1000px;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex: 1;
+    height: 36px;
+    font-size: 16px;
+    border: none;
+    background: transparent;
+    outline: none;
+    margin-right: 10px;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .table-container {
     display: flex;
-    margin-top: 20px;
-    margin-left: 35px;
-    width: 1000px;
-    height: 800px;
     flex-direction: column;
     align-items: center;
-    flex-shrink: 0;
+    width: 1000px;
 }
 
 #user-table {
@@ -78,30 +107,4 @@ h1 {
 
 #user-table tbody tr:hover {
     background-color: #f5f5f5;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    margin-top: 16px;
-    background-color: #8BC7FF;
-    padding: 10px 14px;
-    border-radius: 30px;
-}
-
-.search-bar input {
-    width: 1000px;
-    height: 36px;
-    font-size: 20px;
-    border: none;
-    background: transparent;
-    font-size: 16px;
-    outline: none;
-    margin-right: 10px;
-}
-
-.search-bar button {
-    background: none;
-    border: none;
-    cursor: pointer;
 }
