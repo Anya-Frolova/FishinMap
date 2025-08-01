@@ -92,15 +92,23 @@ const getUserById = async (req, res) => {
     }
 };
 
+
+const fishinMapDB = mongoose.connection.useDb('fishinMap');
+const MainUser = fishinMapDB.model('User', User.schema);
+
 const approveUser = async (req, res) => {
     try {
         const testUser = await TestUser.findById(req.params.id);
-
         if (!testUser) {
-            return res.status(404).json({ message: "User not found in test DB" });
+            return res.status(404).json({ message: "❌ User not found in test DB" });
         }
 
-        const approvedUser = new User({
+        const existingUser = await MainUser.findOne({ email: testUser.email });
+        if (existingUser) {
+            return res.status(409).json({ message: "⚠️ User already exists in fishinMap" });
+        }
+
+        const newUser = new MainUser({
             firstName: testUser.firstName,
             lastName: testUser.lastName,
             email: testUser.email,
@@ -109,14 +117,17 @@ const approveUser = async (req, res) => {
             rank: testUser.rank || 0
         });
 
-        await approvedUser.save();
-        await TestUser.findByIdAndDelete(req.params.id);
+        await newUser.save();
+        await TestUser.findByIdAndDelete(testUser._id);
 
-        res.status(201).json({ message: "User approved and moved to production DB", user: approvedUser });
+        res.status(201).json({ message: "✅ User approved and moved to fishinMap", user: newUser });
+
     } catch (err) {
-        res.status(500).json({ message: "Server error", error: err });
+        console.error("❌ Error in approveUser:", err.message);
+        res.status(500).json({ message: "Server error", error: err.message });
     }
 };
+
 
 module.exports = {
     getAllUsers,
