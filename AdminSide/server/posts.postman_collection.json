@@ -165,6 +165,105 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/posts/pending",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/posts/pending",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts",
+						"pending"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/posts/688b89f40199375c643d3ad9/approve",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/posts/688b89f40199375c643d3ad9/approve",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts",
+						"688b89f40199375c643d3ad9",
+						"approve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/posts/688b89f40199375c643d3ad9/decline",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/posts/688b89f40199375c643d3ad9/decline",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts",
+						"688b89f40199375c643d3ad9",
+						"decline"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/posts/688ba1525df7de2bd17f8f16/decline",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/posts/688ba1525df7de2bd17f8f16/decline",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"posts",
+						"688ba1525df7de2bd17f8f16",
+						"decline"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

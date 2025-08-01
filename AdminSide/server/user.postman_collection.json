@@ -129,6 +129,28 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/users/688a34d87a8051572e68e4de/approve",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/users/688a34d87a8051572e68e4de/approve",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"688a34d87a8051572e68e4de",
+						"approve"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
