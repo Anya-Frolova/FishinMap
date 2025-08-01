@@ -32,14 +32,9 @@ app.use('/api/expert', expertRouter);
 app.use('/api/fish-locations', postRouter);
 app.use('/api/expert-fish-locations', expertRouter);
 
-// 4) Раздача фронтенда
-//    Предполагается, что рядом с server/ лежит папка client/
-const clientPath = path.resolve(__dirname, '.', 'client');
-app.use(express.static(clientPath));
-
 // 5) Корень сайта — страница логина
 app.get('/', (req, res) => {
-  res.sendFile(path.join(clientPath, 'https://fishinmap.netlify.app/index.html'));
+  res.sendFile(path.join('https://fishinmap.netlify.app/index.html'));
 });
 
 // 6) Запуск
