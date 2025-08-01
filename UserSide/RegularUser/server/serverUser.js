@@ -5,9 +5,9 @@ const mongoose =   require('mongoose');
 const path     = require('path');
 const cors     = require('cors');
 
-const authRouter = require('./server/routes/auth');
-const postRouter = require('./server/routes/posts');
-const expertRouter = require('./server/routes/expert');
+const authRouter = require('./routes/auth');
+const postRouter = require('./routes/posts');
+const expertRouter = require('./routes/expert');
 
 // 1) Подключаемся к MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
