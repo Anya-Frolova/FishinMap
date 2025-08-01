@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const password = form.password.value;
 
         try {
-            const res = await fetch("https://fishinmap-1h6i.onrender.com/api/users/login", {
+            const res = await fetch("https://fishinmap-n1oc.onrender.com/api/users/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

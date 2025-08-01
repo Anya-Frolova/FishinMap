@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const res = await fetch("https://fishinmap-opo1.onrender.com/api/users/summary");
+        const res = await fetch("https://fishinmap-n1oc.onrender.com/api/users/summary");
         const { fishermanCount, expertCount } = await res.json();
 
         const totalUsers = fishermanCount + expertCount;
