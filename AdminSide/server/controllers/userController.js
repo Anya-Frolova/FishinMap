@@ -144,6 +144,29 @@ const declineUser = async (req, res) => {
     }
 };
 
+const getUsersSummary = async (req, res) => {
+    try {
+        console.log("📊 getUsersSummary called");
+
+        const users = await MainUser.find();
+        console.log("👥 Users found:", users.length);
+        console.log("🔍 All roles:", users.map(u => u.role));
+
+        const fishermanCount = users.filter(u => u.role === "Regular").length;
+        const expertCount = users.filter(u => u.role === "Expert").length;
+
+        console.log("🎣 Fishermen:", fishermanCount, "🧠 Experts:", expertCount);
+
+        res.status(200).json({ fishermanCount, expertCount });
+
+    } catch (err) {
+        console.error("❌ Error in getUsersSummary:", err.message);
+        res.status(500).json({ message: "Error fetching dashboard data", error: err.message });
+    }
+};
+
+
+
 
 module.exports = {
     getAllUsers,
@@ -153,5 +176,6 @@ module.exports = {
     keepAsFisherman,
     getUserById,
     approveUser,
-    declineUser
+    declineUser,
+    getUsersSummary
 };
