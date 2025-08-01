@@ -74,7 +74,7 @@ if (signupForm) {
 
       // Успешно!
       alert("Your registration request has been sent to the admin for approval.");
-      window.location.href = "mainUserScrean.html";
+      window.location.href = "index.html";
 
     } catch (err) {
       errorDiv.textContent = 'Network/server error, please try again.';
