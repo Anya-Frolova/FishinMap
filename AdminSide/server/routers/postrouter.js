@@ -1,12 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const {
-    getAllPosts,
-    approvePost,
-    deletePost
+    getPendingPostsFromTest
 } = require('../controllers/postController');
 
-router.get('/', getAllPosts);
-
+router.get('/pending', getPendingPostsFromTest);
 
 module.exports = router;
