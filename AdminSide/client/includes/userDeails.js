@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    fetch(`https://fishinmap-n1oc.onrender.com/api/users/${userId}`)
+    fetch(`http://localhost:3000/api/users/${userId}`)
         .then(response => {
             if (!response.ok) throw new Error("User not found");
             return response.json();
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const approveBtn = document.querySelector(".approve");
     approveBtn.addEventListener("click", async () => {
         try {
-            const res = await fetch(`https://fishinmap-n1oc.onrender.com/api/users/${userId}/approve`, {
+            const res = await fetch(`http://localhost:3000/api/users/${userId}/approve`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     declineBtn.addEventListener("click", async () => {
         try {
-            const res = await fetch(`https://fishinmap-n1oc.onrender.com/api/users/${userId}/decline`, {
+            const res = await fetch(`http://localhost:3000/api/users/${userId}/decline`, {
                 method: "DELETE"
             });
 

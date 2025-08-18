@@ -5,12 +5,11 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-
 app.use(cors({
-    origin: 'https://688c4b6c8f943517f7d7236a--superlative-naiad-35a691.netlify.app',
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
-
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'AdminSide/client')));

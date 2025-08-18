@@ -1,6 +1,6 @@
 async function fetchUsersAndDisplay() {
     try {
-        const response = await fetch('https://fishinmap-n1oc.onrender.com/api/users');
+        const response = await fetch('http://localhost:3000/api/users');
         const users = await response.json();
 
         console.log("🔍 users from server:", users);

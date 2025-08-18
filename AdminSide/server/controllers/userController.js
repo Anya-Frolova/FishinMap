@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const TestUser = mongoose.connection.useDb('test').model('User', User.schema);
+const fishinMapDB = mongoose.connection.useDb('fishinMap');
+const MainUser = fishinMapDB.model('User', User.schema);
 
 const getAllUsers = async (req, res) => {
     try {
@@ -91,10 +93,6 @@ const getUserById = async (req, res) => {
         res.status(500).json({ message: 'Error fetching user', error: err });
     }
 };
-
-
-const fishinMapDB = mongoose.connection.useDb('fishinMap');
-const MainUser = fishinMapDB.model('User', User.schema);
 
 const approveUser = async (req, res) => {
     try {

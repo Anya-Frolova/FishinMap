@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const res = await fetch("https://fishinmap-vbhm.onrender.com/api/users/summary");
+        const res = await fetch("http://localhost:3000/api/users/summary");
         const { fishermanCount, expertCount } = await res.json();
 
         const totalUsers = fishermanCount + expertCount;
