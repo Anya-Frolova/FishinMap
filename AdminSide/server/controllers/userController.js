@@ -7,7 +7,7 @@ const MainUser = fishinMapDB.model('User', User.schema);
 const getAllUsers = async (req, res) => {
     try {
         console.log("📥 GET /api/users called");
-        const users = await User.find().select('-password -__v');
+        const users = await User.find();
         console.log("✅ Users found:", users.length);
         res.status(200).json(users);
     } catch (error) {
@@ -20,7 +20,7 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await MainUser.findOne({ email, password });
+        const user = await MainUser.findOne({ email, password }); // 💥 שימוש ב־fishinMap
 
         if (!user) {
             return res.status(401).json({ message: 'Invalid credentials' });
@@ -47,7 +47,7 @@ const loginUser = async (req, res) => {
 
 const getUsersWithRank4 = async (req, res) => {
     try {
-        const users = await User.find({ rank: 4 }).select('-password -__v');
+        const users = await User.find({ rank: 4 });
         res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching users with rank 4', error });
@@ -60,8 +60,7 @@ const upgradeToExpert = async (req, res) => {
             req.params.id,
             { role: 'Expert' },
             { new: true }
-        ).select('-password -__v');
-
+        );
         if (!user) return res.status(404).json({ message: 'User not found' });
 
         res.status(200).json({ message: 'User upgraded to expert', user });
@@ -76,8 +75,7 @@ const keepAsFisherman = async (req, res) => {
             req.params.id,
             { role: 'Regular' },
             { new: true }
-        ).select('-password -__v');
-
+        );
         if (!user) return res.status(404).json({ message: 'User not found' });
 
         res.status(200).json({ message: 'User kept as fisherman', user });
@@ -88,7 +86,7 @@ const keepAsFisherman = async (req, res) => {
 
 const getUserById = async (req, res) => {
     try {
-        const user = await User.findById(req.params.id).select('-password -__v');
+        const user = await User.findById(req.params.id);
         if (!user) return res.status(404).json({ message: 'User not found' });
         res.status(200).json(user);
     } catch (err) {
@@ -107,6 +105,7 @@ const approveUser = async (req, res) => {
         if (existingUser) {
             return res.status(409).json({ message: "⚠️ User already exists in fishinMap" });
         }
+        const updatedRank = (testUser.rank || 0) + 1;
 
         const newUser = new MainUser({
             firstName: testUser.firstName,
@@ -120,9 +119,7 @@ const approveUser = async (req, res) => {
         await newUser.save();
         await TestUser.findByIdAndDelete(testUser._id);
 
-        const { password, __v, ...safe } = newUser.toObject();
-
-        res.status(201).json({ message: "✅ User approved and moved to fishinMap", user: safe });
+        res.status(201).json({ message: "✅ User approved and moved to fishinMap", user: newUser });
 
     } catch (err) {
         console.error("❌ Error in approveUser:", err.message);
@@ -138,7 +135,7 @@ const declineUser = async (req, res) => {
             return res.status(404).json({ message: "❌ User not found in test DB" });
         }
 
-        res.status(200).json({ message: "🗑️ User declined and deleted from test DB" });
+        res.status(200).json({ message: "🗑️ User declined and deleted from test DB", user: deletedUser });
     } catch (err) {
         console.error("❌ Error in declineUser:", err.message);
         res.status(500).json({ message: "Server error", error: err.message });
@@ -149,7 +146,7 @@ const getUsersSummary = async (req, res) => {
     try {
         console.log("📊 getUsersSummary called");
 
-        const users = await MainUser.find().select('role');
+        const users = await MainUser.find();
         console.log("👥 Users found:", users.length);
         console.log("🔍 All roles:", users.map(u => u.role));
 
@@ -165,6 +162,9 @@ const getUsersSummary = async (req, res) => {
         res.status(500).json({ message: "Error fetching dashboard data", error: err.message });
     }
 };
+
+
+
 
 module.exports = {
     getAllUsers,
